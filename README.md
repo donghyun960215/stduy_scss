@@ -318,5 +318,145 @@ scss에서는 다른 단위의 계산은 불가능 하지만 css에서는 사용
 기본값 설정은 사용에 맞게 설정을 하면 된다. 기본값을 사용을 하면 수치변경을 사용 안할 시 기본으로 설정한 크기가 입력되게 된다.
 여러개도 가능하며 순서를 맞춰서 사용을 하면된다. 만약 매개변수는 2개를 사용중인데 뒤에 매개변수만 사용을 하고 싶다면
 적용할 매개변수 이름을 직접적으로 명시를 해주면 된다.
+```
 
+## 반복문
+```scss
+@for $i from 1 through 10 {
+    .box:nth-child(#{$i}){
+        width: 100px * $i;
+    }
+}
+
+```
+```css
+.box:nth-child(1) {
+  width: 100px;
+}
+
+.box:nth-child(2) {
+  width: 200px;
+}
+
+.box:nth-child(3) {
+  width: 300px;
+}
+
+.box:nth-child(4) {
+  width: 400px;
+}
+
+.box:nth-child(5) {
+  width: 500px;
+}
+
+.box:nth-child(6) {
+  width: 600px;
+}
+
+.box:nth-child(7) {
+  width: 700px;
+}
+
+.box:nth-child(8) {
+  width: 800px;
+}
+
+.box:nth-child(9) {
+  width: 900px;
+}
+
+.box:nth-child(10) {
+  width: 1000px;
+}
+```
+```plaintext
+제로 베이스 X
+$ 변수 이름 정의
+form 뒤에 숫자는 몇번 째 숫자부터 시작을 할 것이냐
+through 뒤 숫자는 반복 횟수
+scss 보관 분법 -> #{ }
+```
+
+## 함수
+```scss
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@function ratio($size, $ratio){
+    @return $size * $ratio
+}
+.box{
+    $width: 100px;
+    
+    width: $width;
+    height: ratio($width, 9/16);
+    @include center;
+}
+```
+```css
+.box {
+  width: 100px;
+  height: 56.25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+```plaintext
+@mixin 같은경우는 모음집으로 생각하면 된다. 재활용에 쓰인다.
+@function 실제로 어떤 값을 따로 연산을 해서 반환된 값을 사용하는데 쓰인다.
+```
+
+## 색상 내장 함수
+```scss
+.box{
+    $color: royalblue;
+    width: 200px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: $color;
+    &:hover{
+        background-color: darken($color, 10%);
+    }
+    &.built-in{
+        background-color: saturate($color, 10%);
+    }
+}
+```
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: royalblue;
+}
+.box:hover {
+  background-color: #214cce;
+}
+.box.built-in {
+  background-color: #3664ec;
+}
+```
+```plaintext
+mix($cloor, blue);  mix() 내장 함수는 첫번째 인수의 색상과 두번재 인수의 색상을 합친 색이 나온다. 
+
+lighten($cloor, 10%) 첫번째 인수의 색상을 두번째 인수의 크기만큼 더 밝게 만들어 주는 함수.
+
+darken($cloor, 10%)첫번째 인수의 색상을 두번째 인수의 크기만큼 더 어둡게 만들어 주는 함수.
+darken()는 어느상황에 많이 쓰이냐면 :hover 를 사용할 때 많이 쓰인다. 버튼 만들 때 유용하게 쓰인다.
+
+saturate($cloor, 10%) 첫번째 인수의 색상을 두번째 인수의 크기만큼 채도를 더올려주는함수.
+
+desaturate($cloor, 10%) 첫번째 인수의 색상을 두번째 인수의 크기만큼 채도를 더내려주는함수.
+
+grayscale($color) 인수의 색상을 회색으롤 만들어 준다.
+
+invert($color) 인수의 색상을 반전시킨다.
+
+rgba($color, .5) 첫번째 인수의 색상을 두번째 인수 크기만큼 투명도를 조절한다.
 ```
