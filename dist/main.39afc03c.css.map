@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAGE;EACE,OAJI","file":"main.39afc03c.css","sourceRoot":"..","sourcesContent":["$color: royalblue;\n\n.container{\n  h1{\n    color: $color;\n  }\n}"]}
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAKE;EACE,OAJI","file":"main.39afc03c.css","sourceRoot":"..","sourcesContent":["//@import \"./sub\",\"./sub2.scss\";\r\n\r\n$color: royalblue;\r\n\r\n.container{\r\n  h1{\r\n    color: $color;\r\n  }\r\n}\r\n\r\n//url 과 확장자를 따로 명시를 안해도 정상적으로 동작을 한다.\r\n// , 통해서 다른 파일도 가져오기가 가능하다."]}

@@ -462,3 +462,21 @@ invert($color) 인수의 색상을 반전시킨다.
 
 rgba($color, .5) 첫번째 인수의 색상을 두번째 인수 크기만큼 투명도를 조절한다.
 ```
+
+## 가져오기
+
+```scss
+@import "./sub","./sub2.scss";
+
+$color: royalblue;
+
+.container{
+  h1{
+    color: $color;
+  }
+}
+```
+```plaintext
+url 과 확장자를 따로 명시를 안해도 정상적으로 동작을 한다.
+, 통해서 다른 파일도 가져오기가 가능하다.
+```

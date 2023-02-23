@@ -1,7 +1,7 @@
 {
   "name": "scss-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "```plaintext\r 기존 css 에서 사용하던 표준 주석인 /* */ 사용가능하다.\r 그리고 // 식의 주석처리고 가능하다.\r ```\r ```plaintext\r 하지만 css 로 컴파일이 된 후 보게 된다면\r // 로 주석을 처리한 부분은 삭제처리가 되며 아예 안보이게 된다.\r /* */ 로 주석을 처리한 부분은 주석처리가 된 상태인 정상적인 상태로 보인다.\r ```",
   "main": "index.js",
   "scripts": {
     "dev": "parcel index.html",
@@ -13,5 +13,13 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "sass": "^1.58.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donghyun960215/stduy_scss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/donghyun960215/stduy_scss/issues"
+  },
+  "homepage": "https://github.com/donghyun960215/stduy_scss#readme"
 }

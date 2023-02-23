@@ -1,3 +1,5 @@
+//@import "./sub","./sub2.scss";
+
 $color: royalblue;
 
 .container{
@@ -5,3 +7,6 @@ $color: royalblue;
     color: $color;
   }
 }
+
+//url 과 확장자를 따로 명시를 안해도 정상적으로 동작을 한다.
+// , 통해서 다른 파일도 가져오기가 가능하다.
