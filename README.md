@@ -480,3 +480,118 @@ $color: royalblue;
 url 과 확장자를 따로 명시를 안해도 정상적으로 동작을 한다.
 , 통해서 다른 파일도 가져오기가 가능하다.
 ```
+
+## 반복문 @each
+```scss
+$list: orange, red, yellow;
+$map: (
+    o: orange,
+    r: red,
+    y: yellow
+);
+
+@each $c in $list {
+    .box{
+        color: $c;
+    }
+}
+```
+```css
+.box {
+  color: orange;
+}
+
+.box {
+  color: red;
+}
+
+.box {
+  color: yellow;
+}
+```
+```plaintext{
+ @each 와 변수 list를 사용하여 반복문을 만들 수 있다.
+}
+```
+```scss
+$list: orange, red, yellow;
+$map: (
+    o: orange,
+    r: red,
+    y: yellow
+);
+
+@each $k, $v in $map {
+    .box-#{$k}{
+        color: $v;
+    }
+}
+```
+```css
+.box-o {
+  color: orange;
+}
+
+.box-r {
+  color: red;
+}
+
+.box-y {
+  color: yellow;
+}
+```
+```plaintext
+@each 와 변수인 map을 사용하여 key,value를 사용하여 반복문을 만들 수 있다.
+```
+
+## 재활용 @content
+```scss
+@mixin left-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @content;
+}
+.container {
+    width: 100px;
+    height: 100px;
+    @include left-top;
+}
+.box {
+    width: 200px;
+    height: 200px;
+    @include left-top{
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+```
+```css
+.container {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+```
+```plaintext
+@mixin 사용 시 @content를 사용하게 되면 재활용을 하면서 다른 부분을 추가할 수 있다.
+예시를 보게된다면 .box 부분에서 @include를 사용 하고 추가적으로 속성을 넣을 수 있다.
+그 이유는 @mixin생성 당시 안에 @content가 있기 때문에 가능하다.
+```
+
+
+
